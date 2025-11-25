@@ -30,7 +30,7 @@ export default function Navbar({ className }: { className?: string }) {
 
   return (
     <div className={cn("py-6", className)}>
-      <div className="container flex justify-between items-center mx-auto">
+      <div className="w-5xl flex justify-between items-center mx-auto">
         <Link href="/" className="flex items-center gap-2">
           <Avatar className="w-6 h-6">
             <AvatarImage src={profileData.profileUrl} alt="@shadcn" />

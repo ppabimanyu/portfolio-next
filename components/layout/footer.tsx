@@ -6,7 +6,7 @@ import React from "react";
 export default function Footer({ className }: { className?: string }) {
   return (
     <div className={cn("w-full py-6", className)}>
-      <div className="container flex justify-between mx-auto">
+      <div className="w-5xl flex justify-between mx-auto">
         <p className="text-sm">Build with Next.js, Deployed with Vercel</p>
         <div className="flex gap-2">
           <Link
