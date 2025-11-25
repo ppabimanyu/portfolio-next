@@ -40,7 +40,9 @@ export default function RootLayout({
         >
           <div className="mx-auto min-h-screen flex flex-col">
             <Navbar className="sticky top-0 z-50 bg-background/10 backdrop-blur" />
-            <div className="w-5xl mx-auto py-4 space-y-4">{children}</div>
+            <div className="container lg:w-7xl mx-auto py-4 space-y-4">
+              {children}
+            </div>
             <Footer className="mt-auto" />
           </div>
           {/* <SmoothCursor /> */}

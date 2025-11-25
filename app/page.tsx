@@ -43,8 +43,8 @@ export default function Home() {
               <Image
                 src="/gradian-blur.svg"
                 alt="blur"
-                width={400}
-                height={400}
+                width={300}
+                height={300}
                 className="col-start-1 row-start-1"
               />
               <Image
