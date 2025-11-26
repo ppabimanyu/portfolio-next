@@ -1,5 +1,6 @@
 import ProjectCard from "@/components/project-card";
 import { allProjects } from "content-collections";
+import Link from "next/link";
 
 export default function Projects() {
   return (
@@ -36,7 +37,9 @@ export default function Projects() {
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {allProjects.map((project) => (
-          <ProjectCard project={project} key={project.name} />
+          <Link href={`/projects/${project.slug}`} key={project.slug}>
+            <ProjectCard project={project} />
+          </Link>
         ))}
       </div>
     </div>

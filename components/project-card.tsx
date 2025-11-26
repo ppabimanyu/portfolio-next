@@ -1,6 +1,9 @@
+"use client";
+
 import { Safari } from "./ui/safari";
 import { GithubIcon, SquareArrowOutUpRight } from "lucide-react";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 type ProjectCardProps = {
   project: {
@@ -43,27 +46,31 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       <div className="flex gap-2 justify-between items-center mt-4">
         <div className="flex gap-2">
           {project.linkLive && (
-            <a
-              href={project.linkLive}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Button
+              variant="ghost"
+              size={"sm"}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                window.open(project.linkLive, "_blank");
+              }}
             >
-              <Button variant="ghost" size={"sm"}>
-                <SquareArrowOutUpRight />
-                Live
-              </Button>
-            </a>
+              <SquareArrowOutUpRight />
+              Live
+            </Button>
           )}
           {project.linkGithub && (
-            <a
-              href={project.linkGithub}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Button
+              variant="ghost"
+              size={"sm"}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                window.open(project.linkGithub, "_blank");
+              }}
             >
-              <Button variant="ghost" size={"sm"}>
-                <GithubIcon /> GitHub
-              </Button>
-            </a>
+              <GithubIcon /> GitHub
+            </Button>
           )}
         </div>
         <p className="text-sm text-muted-foreground capitalize">

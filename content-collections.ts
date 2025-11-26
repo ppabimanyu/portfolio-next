@@ -23,7 +23,10 @@ const posts = defineCollection({
     return {
       ...document,
       readTime: readTime(document.content),
-      slug: document._meta.fileName.replace(".md", "").toLowerCase(),
+      slug: document._meta.fileName
+        .replaceAll(" ", "-")
+        .replace(".md", "")
+        .toLowerCase(),
       publishDate: new Date(document.publishDate),
       html,
     };
@@ -59,7 +62,10 @@ const projects = defineCollection({
     const html = await compileMarkdown(context, document);
     return {
       ...document,
-      slug: document._meta.fileName.replace(".md", "").toLowerCase(),
+      slug: document._meta.fileName
+        .replaceAll(" ", "-")
+        .replace(".md", "")
+        .toLowerCase(),
       html,
     };
   },

@@ -66,7 +66,7 @@ export default function Home() {
           <div className="space-y-4">
             <div className="flex gap-2 items-center">
               <p className="text-sm text-muted-foreground">
-                {lastestPost.publishDate.toLocaleDateString()}
+                {lastestPost.publishDate.toDateString()}
               </p>
               <div className="h-1 w-1 bg-muted-foreground rounded-full" />
               <p className="text-sm text-muted-foreground">
@@ -129,7 +129,9 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {allProjects.slice(0, 3).map((project) => (
-            <ProjectCard project={project} key={project.name} />
+            <Link href={`/projects/${project.slug}`} key={project.slug}>
+              <ProjectCard project={project} />
+            </Link>
           ))}
         </div>
         <p className="text-sm text-muted-foreground">
