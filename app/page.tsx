@@ -8,6 +8,7 @@ import ProjectCard from "@/components/project-card";
 import { allPosts } from "@/.content-collections/generated";
 import Contact from "@/components/contact";
 import { allProjects } from "@/.content-collections/generated";
+import { CodeXml, Mail } from "lucide-react";
 
 export default function Home() {
   const lastestPost = allPosts.toSorted(
@@ -31,10 +32,14 @@ export default function Home() {
             </div>
             <div className="flex gap-2">
               <Link href={"/projects"}>
-                <PrimaryButton>View Projects</PrimaryButton>
+                <PrimaryButton className="flex gap-1">
+                  <CodeXml size={16} /> View Projects
+                </PrimaryButton>
               </Link>
-              <Link href={`mailto:${profileData.email}`}>
-                <SecondaryButton>Contact</SecondaryButton>
+              <Link href={"/#contact"}>
+                <SecondaryButton className="flex gap-1">
+                  <Mail size={16} /> Contact
+                </SecondaryButton>
               </Link>
             </div>
           </div>
@@ -79,7 +84,7 @@ export default function Home() {
               {lastestPost.description}
             </p>
             <Link
-              href={`/posts/${lastestPost.slug}`}
+              href={`/writing/${lastestPost.slug}`}
               className="px-0 text-sm font-semibold cursor-pointer text-primary hover:underline"
             >
               Read article

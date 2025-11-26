@@ -11,17 +11,14 @@ const navData = [
   {
     name: "Home",
     href: "/",
-    active: true,
   },
   {
     name: "Projects",
     href: "/projects",
-    active: false,
   },
   {
     name: "Writing",
     href: "/writing",
-    active: false,
   },
 ];
 
@@ -42,28 +39,31 @@ export default function Navbar({ className }: { className?: string }) {
           <div className="h-1 w-1 bg-foreground rounded-full" />
           <p className="text-sm font-semibold">{profileData.jobTitle}</p>
         </Link>
-        <div className="flex items-center gap-2">
-          {navData.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={cn(
-                pathname === item.href
-                  ? "text-primary inset-shadow-sm inset-shadow-primary shadow-lg rounded-full px-4 py-1"
-                  : "text-muted-foreground px-4",
-                "text-sm font-semibold cursor-pointer"
-              )}
-            >
-              {item.name}
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6">
+            {navData.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={cn(
+                  pathname === item.href
+                    ? "text-primary"
+                    : "text-muted-foreground",
+                  "text-sm font-semibold cursor-pointer flex items-center gap-1"
+                )}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+          <div className="flex items-center gap-2">
+            <Link href={"/resume.pdf"} download>
+              <div className="rounded-full border-primary text-primary border px-2 py-1.5 text-sm font-semibold hover:bg-primary hover:text-primary-foreground">
+                Download CV
+              </div>
             </Link>
-          ))}
-
-          <Link href={"/resume.pdf"} download>
-            <div className="rounded-full border-primary text-primary border px-2 py-1.5 text-sm font-semibold hover:bg-primary hover:text-primary-foreground">
-              Download CV
-            </div>
-          </Link>
-          <ThemeToggle />
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </div>

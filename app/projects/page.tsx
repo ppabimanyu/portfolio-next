@@ -25,7 +25,8 @@ export default function Projects() {
             </p>
             <div className="h-1 w-1 bg-muted-foreground rounded-full" />
             <p className="text-sm text-muted-foreground">
-              Last updated {new Date().getFullYear()}
+              Last updated{" "}
+              {allProjects.toSorted((a, b) => b.year - a.year)[0].year}
             </p>
           </div>
           <p className="text-sm text-muted-foreground">

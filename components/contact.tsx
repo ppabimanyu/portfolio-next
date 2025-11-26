@@ -17,6 +17,7 @@ import { useForm } from "@tanstack/react-form";
 import { z } from "zod";
 import { sendContactEmail } from "@/lib/email-sender";
 import { toast } from "sonner";
+import { Github, Send } from "lucide-react";
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -46,7 +47,10 @@ export default function Contact() {
     },
   });
   return (
-    <PlainCard className="w-full flex flex-col md:flex-row gap-6 justify-between items-start">
+    <PlainCard
+      id="contact"
+      className="w-full flex flex-col md:flex-row gap-6 justify-between items-start"
+    >
       <div className="space-y-4">
         <h2 className="uppercase text-sm text-muted-foreground">Contact</h2>
         <div className="space-y-2">
@@ -87,7 +91,7 @@ export default function Contact() {
               </Link>
               <Link
                 href={profileData.github}
-                className="text-sm hover:underline text-primary"
+                className="text-sm hover:underline text-primary flex gap-1 items-center"
               >
                 GitHub
               </Link>
@@ -115,6 +119,7 @@ export default function Contact() {
                         placeholder="John Doe"
                         value={field.state.value}
                         onChange={(e) => field.handleChange(e.target.value)}
+                        className="bg-transparent dark:bg-transparent focus-visible:ring-0 focus-visible:border-primary/30 focus-visible:inset-shadow-sm focus-visible:inset-shadow-primary/30"
                       />
                     </Field>
                   )}
@@ -128,6 +133,7 @@ export default function Contact() {
                         placeholder="john.doe@example.com"
                         value={field.state.value}
                         onChange={(e) => field.handleChange(e.target.value)}
+                        className="bg-transparent dark:bg-transparent focus-visible:ring-0 focus-visible:border-primary/30 focus-visible:inset-shadow-sm focus-visible:inset-shadow-primary/30"
                       />
                     </Field>
                   )}
@@ -145,6 +151,7 @@ export default function Contact() {
                       rows={4}
                       value={field.state.value}
                       onChange={(e) => field.handleChange(e.target.value)}
+                      className="bg-transparent dark:bg-transparent focus-visible:ring-0 focus-visible:border-primary/30 focus-visible:inset-shadow-sm focus-visible:inset-shadow-primary/30"
                     />
                   </Field>
                 )}
@@ -156,7 +163,9 @@ export default function Contact() {
               </p>
               <form.Subscribe selector={(state) => [state.canSubmit]}>
                 {([canSubmit]) => (
-                  <PrimaryButton disabled={!canSubmit}>Send Note</PrimaryButton>
+                  <PrimaryButton disabled={!canSubmit}>
+                    <Send size={16} /> Send Note
+                  </PrimaryButton>
                 )}
               </form.Subscribe>
             </div>

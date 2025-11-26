@@ -32,15 +32,15 @@ export default function WritingPage() {
           </p>
         </div>
       </div>
-      <PlainCard className="w-full space-y-4">
+      <PlainCard className="w-full">
         {allPosts.map((post, i) => (
           <Link
-            href={`/posts/${post.slug}`}
+            href={`/writing/${post.slug}`}
             key={post.slug}
             className="space-y-4 cursor-pointer"
           >
             <PostCard post={post} />
-            {i < allPosts.length - 1 && <Separator />}
+            {i < allPosts.length - 1 && <Separator className="my-4" />}
           </Link>
         ))}
       </PlainCard>
