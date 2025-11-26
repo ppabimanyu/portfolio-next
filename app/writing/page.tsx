@@ -5,6 +5,10 @@ import Link from "next/link";
 import { allPosts } from "content-collections";
 
 export default function WritingPage() {
+  const orderedPosts = allPosts.sort(
+    (a, b) => b.publishDate.getTime() - a.publishDate.getTime()
+  );
+
   return (
     <div className="w-full space-y-12 mb-12">
       <div className="flex gap-4 justify-between items-end">
@@ -33,7 +37,7 @@ export default function WritingPage() {
         </div>
       </div>
       <PlainCard className="w-full">
-        {allPosts.map((post, i) => (
+        {orderedPosts.map((post, i) => (
           <Link
             href={`/writing/${post.slug}`}
             key={post.slug}

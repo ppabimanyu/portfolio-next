@@ -6,6 +6,7 @@ import { Safari } from "@/components/ui/safari";
 import { Github, SquareArrowOutUpRight } from "lucide-react";
 import PrimaryButton from "@/components/primary-button";
 import Link from "next/link";
+import Typography from "@/components/typography";
 
 export default async function ProjectPage({
   params,
@@ -72,10 +73,7 @@ export default async function ProjectPage({
         </div>
       </PlainCard>
       <div className="space-y-4">
-        <div
-          className="prose dark:prose-invert max-w-none"
-          dangerouslySetInnerHTML={{ __html: project.html }}
-        />
+        <Typography html={project.html} />
       </div>
     </div>
   );

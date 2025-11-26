@@ -26,7 +26,7 @@ export default function Navbar({ className }: { className?: string }) {
   const pathname = usePathname();
 
   return (
-    <div className={cn("py-6", className)}>
+    <div className={cn("py-4", className)}>
       <div className="container lg:w-7xl flex justify-between items-center mx-auto">
         <Link href="/" className="flex items-center gap-2">
           <Avatar className="w-6 h-6">

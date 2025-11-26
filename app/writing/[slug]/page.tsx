@@ -1,4 +1,7 @@
 import { allPosts } from "@/.content-collections/generated";
+import Typography from "@/components/typography";
+import { Separator } from "@/components/ui/separator";
+import ShareButtons from "@/components/share-buttons";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -41,6 +44,7 @@ export default async function PostPage({
           </span>
         ))}
       </div>
+      <ShareButtons url={`/writing/${post.slug}`} title={post.title} />
       <div className="w-full border rounded-3xl p-4 my-4">
         <Image
           src={post.thumbnail}
@@ -50,11 +54,10 @@ export default async function PostPage({
           className="object-cover w-full h-full rounded-md"
         />
       </div>
-      <div className="space-y-4">
-        <div
-          className="prose dark:prose-invert max-w-none"
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
+      <div className="space-y-8">
+        <p className="text-muted-foreground text-md">{post.description}</p>
+        <Separator />
+        <Typography html={post.html} />
       </div>
     </div>
   );

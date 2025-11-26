@@ -34,7 +34,7 @@ const posts = defineCollection({
 });
 
 const readTime = (content: string) => {
-  const wordsPerMinute = 300;
+  const wordsPerMinute = 200;
   const cleanText = content
     .replace(/<[^>]*>/g, "")
     .replace(/```[\s\S]*?```/g, "");
