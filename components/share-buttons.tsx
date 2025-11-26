@@ -12,16 +12,14 @@ interface ShareButtonsProps {
 export default function ShareButtons({ url, title }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
-  const appId = "542599432471018";
-
   const shareUrl = typeof window !== "undefined" ? window.location.href : url;
   const encodedUrl = encodeURIComponent(shareUrl);
   const encodedTitle = encodeURIComponent(title);
 
   const shareLinks = {
-    twitter: `https://x.com/intent/post?text=${encodedTitle}%20${encodedUrl}&url=${encodedUrl}`,
+    twitter: `https://x.com/intent/post?text=${encodedTitle}%20${encodedUrl}`,
     linkedin: `https://www.linkedin.com/sharing/share-offsite?mini=true&url=${encodedUrl}`,
-    facebook: `https://www.facebook.com/share_channel/?type=reshare&link=${encodedUrl}&app_id=${appId}&source_surface=external_reshare&display=page&hashtag`,
+    facebook: `https://www.facebook.com/share_channel/?type=reshare&link=${encodedUrl}&app_id=${new Date().getTime()}&source_surface=external_reshare&display=page&hashtag`,
   };
 
   const handleCopyLink = async () => {
