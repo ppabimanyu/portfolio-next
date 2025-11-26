@@ -4,9 +4,13 @@ import { Separator } from "@/components/ui/separator";
 import ShareButtons from "@/components/share-buttons";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import React from "react";
+import { env } from "@/env";
 
-export default async function PostPage({
+type PostPageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -14,11 +18,53 @@ export default async function PostPage({
   const { slug } = await params;
   const post = allPosts.find((post) => post.slug === slug);
   if (!post) {
+    return {
+      title: "Post Not Found",
+      description: "Post Not Found",
+    };
+  }
+
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      images: [
+        {
+          url: `${env.SITE_URL}${post.thumbnail}`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      title: post.title,
+      description: post.description,
+      card: "summary_large_image",
+      images: [
+        {
+          url: `${env.SITE_URL}${post.thumbnail}`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+  };
+}
+
+export default async function PostPage({ params }: PostPageProps) {
+  const { slug } = await params;
+  const post = allPosts.find((post) => post.slug === slug);
+  if (!post) {
     notFound();
   }
 
   return (
-    <div className="space-y-4 max-w-4xl mx-auto mb-12">
+    <article className="space-y-4 max-w-4xl mx-auto mb-12">
       <div className="flex gap-2 items-center text-sm text-muted-foreground uppercase">
         <span>{post.category}</span>
         <div className="h-1 w-1 bg-muted-foreground rounded-full" />
@@ -59,6 +105,6 @@ export default async function PostPage({
         <Separator />
         <Typography html={post.html} />
       </div>
-    </div>
+    </article>
   );
 }

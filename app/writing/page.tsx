@@ -3,6 +3,30 @@ import PostCard from "@/components/post-card";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { allPosts } from "content-collections";
+import { env } from "@/env";
+import { profileData } from "@/lib/data";
+
+export const metadata = {
+  title: "Writing & Notes",
+  description:
+    "A slow, considered journal of things I learn while building backend-heavy products with calm, legible frontends. Mostly about tradeoffs, architecture, and keeping teams unblocked.",
+  openGraph: {
+    title: "Writing & Notes",
+    description:
+      "A slow, considered journal of things I learn while building backend-heavy products with calm, legible frontends. Mostly about tradeoffs, architecture, and keeping teams unblocked.",
+    type: "website",
+    locale: "id_ID",
+    siteName: env.SITE_URL,
+    emails: profileData.email,
+  },
+  twitter: {
+    title: "Writing & Notes",
+    description:
+      "A slow, considered journal of things I learn while building backend-heavy products with calm, legible frontends. Mostly about tradeoffs, architecture, and keeping teams unblocked.",
+    card: "summary_large_image",
+    site: env.SITE_URL,
+  },
+};
 
 export default function WritingPage() {
   const orderedPosts = allPosts.sort(

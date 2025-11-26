@@ -17,7 +17,7 @@ import { useForm } from "@tanstack/react-form";
 import { z } from "zod";
 import { sendContactEmail } from "@/lib/email-sender";
 import { toast } from "sonner";
-import { Github, Send } from "lucide-react";
+import { Send } from "lucide-react";
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),

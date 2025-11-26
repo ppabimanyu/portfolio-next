@@ -13,7 +13,6 @@ export default function SecondaryButton({
     <Button
       size={"sm"}
       className={cn(
-        // "rounded-full bg-transparent inset-shadow-sm inset-shadow-foreground text-foreground shadow-lg hover:bg-foreground/20 transition-all",
         "rounded-full bg-transparent border text-foreground hover:bg-foreground/10 transition-all",
         className
       )}

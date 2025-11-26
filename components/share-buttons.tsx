@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Facebook, Linkedin, Twitter, Link2, Check } from "lucide-react";
 
@@ -12,8 +12,7 @@ interface ShareButtonsProps {
 export default function ShareButtons({ url, title }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
-  console.log(window.location.href);
-  const shareUrl = url || window.location.href;
+  const [shareUrl, setShareUrl] = useState("");
   const encodedUrl = encodeURIComponent(shareUrl);
   const encodedTitle = encodeURIComponent(title || "");
 
@@ -37,7 +36,12 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
     <div className="flex items-center gap-2">
       <span className="text-sm text-muted-foreground">Share:</span>
       <div className="flex gap-2">
-        <Button variant="outline" size="icon" className="h-8 w-8" asChild>
+        <Button
+          variant="outline"
+          size="icon"
+          className="h-8 w-8"
+          onClick={() => setShareUrl(url || window.location.href)}
+        >
           <a
             href={shareLinks.twitter}
             target="_blank"
@@ -47,7 +51,12 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
             <Twitter className="h-4 w-4" />
           </a>
         </Button>
-        <Button variant="outline" size="icon" className="h-8 w-8" asChild>
+        <Button
+          variant="outline"
+          size="icon"
+          className="h-8 w-8"
+          onClick={() => setShareUrl(url || window.location.href)}
+        >
           <a
             href={shareLinks.linkedin}
             target="_blank"
@@ -57,7 +66,12 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
             <Linkedin className="h-4 w-4" />
           </a>
         </Button>
-        <Button variant="outline" size="icon" className="h-8 w-8" asChild>
+        <Button
+          variant="outline"
+          size="icon"
+          className="h-8 w-8"
+          onClick={() => setShareUrl(url || window.location.href)}
+        >
           <a
             href={shareLinks.facebook}
             target="_blank"

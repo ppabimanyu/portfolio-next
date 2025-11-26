@@ -2,7 +2,6 @@ import { profileData } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Github, Linkedin, Mail, Triangle } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 
 export default function Footer({ className }: { className?: string }) {
   return (

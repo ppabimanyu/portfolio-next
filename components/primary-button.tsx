@@ -13,7 +13,6 @@ export default function PrimaryButton({
     <Button
       size={"sm"}
       className={cn(
-        // "rounded-full bg-transparent inset-shadow-sm inset-shadow-primary text-primary shadow-lg hover:bg-primary/20 transition-all",
         "rounded-full bg-primary text-background border",
         className
       )}

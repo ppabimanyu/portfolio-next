@@ -3,7 +3,6 @@
 import { Safari } from "./ui/safari";
 import { GithubIcon, SquareArrowOutUpRight } from "lucide-react";
 import { Button } from "./ui/button";
-import Link from "next/link";
 
 type ProjectCardProps = {
   project: {

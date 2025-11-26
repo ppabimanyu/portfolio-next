@@ -7,19 +7,68 @@ import { Github, SquareArrowOutUpRight } from "lucide-react";
 import PrimaryButton from "@/components/primary-button";
 import Link from "next/link";
 import Typography from "@/components/typography";
+import { env } from "@/env";
+import { profileData } from "@/lib/data";
 
-export default async function ProjectPage({
-  params,
-}: {
+type ProjectPageProps = {
   params: Promise<{ slug: string }>;
-}) {
+};
+
+export async function generateMetadata({ params }: ProjectPageProps) {
+  const { slug } = await params;
+  const project = allProjects.find((project) => project.slug === slug);
+  if (!project) {
+    return {
+      title: "Not Found",
+      description: "Project not found",
+    };
+  }
+
+  return {
+    title: project.name,
+    description: project.description,
+    openGraph: {
+      title: project.name,
+      description: project.description,
+      type: "website",
+      locale: "id_ID",
+      siteName: env.SITE_URL,
+      site: `${env.SITE_URL}/projects/${slug}`,
+      emails: profileData.email,
+      images: [
+        {
+          url: `${env.SITE_URL}${project.thumbnail}`,
+          width: 1200,
+          height: 630,
+          alt: project.name,
+        },
+      ],
+      twitter: {
+        title: project.name,
+        description: project.description,
+        card: "summary_large_image",
+        site: `${env.SITE_URL}/projects/${slug}`,
+        images: [
+          {
+            url: `${env.SITE_URL}${project.thumbnail}`,
+            width: 1200,
+            height: 630,
+            alt: project.name,
+          },
+        ],
+      },
+    },
+  };
+}
+
+export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = allProjects.find((project) => project.slug === slug);
   if (!project) {
     notFound();
   }
   return (
-    <div className="space-y-4 max-w-4xl mx-auto mb-12">
+    <article className="space-y-4 max-w-4xl mx-auto mb-12">
       <PlainCard className="flex justify-between items-center gap-4">
         <div className="space-y-4 flex-2/3">
           <div className="flex gap-2 items-center text-sm text-muted-foreground uppercase">
@@ -75,6 +124,6 @@ export default async function ProjectPage({
       <div className="space-y-4">
         <Typography html={project.html} />
       </div>
-    </div>
+    </article>
   );
 }

@@ -1,6 +1,25 @@
 import ProjectCard from "@/components/project-card";
+import { env } from "@/env";
+import { profileData } from "@/lib/data";
 import { allProjects } from "content-collections";
 import Link from "next/link";
+
+export const metadata = {
+  title: "Projects",
+  description:
+    "A closer look at shipped products, internal tools, and personal experiments. Each project balances resilient backends with clear, minimal interfaces.",
+  type: "website",
+  locale: "id_ID",
+  siteName: env.SITE_URL,
+  emails: profileData.email,
+  twitter: {
+    title: "Projects",
+    description:
+      "A closer look at shipped products, internal tools, and personal experiments. Each project balances resilient backends with clear, minimal interfaces.",
+    card: "summary_large_image",
+    site: env.SITE_URL,
+  },
+};
 
 export default function Projects() {
   return (
