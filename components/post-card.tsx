@@ -34,7 +34,7 @@ export default function PostCard({ post }: PostCardProps) {
             {post.description}
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
           {post.tags.map((tag, i) => (
             <div
               key={tag}

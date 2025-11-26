@@ -26,7 +26,7 @@ export default async function PostPage({
       </div>
       <div className="space-y-2">
         <h1 className="text-4xl font-semibold italic">{post.title}</h1>
-        <div className="flex gap-2 items-center text-sm text-muted-foreground">
+        <div className="flex flex-wrap gap-2 items-center text-sm text-muted-foreground">
           <span>{post.author}</span>
           <div className="h-1 w-1 bg-muted-foreground rounded-full" />
           <span>{post.publishDate.toDateString()}</span>
@@ -34,7 +34,7 @@ export default async function PostPage({
           <span>{post.readTime}</span>
         </div>
       </div>
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-wrap">
         {post.tags.map((tag) => (
           <span
             key={tag}
@@ -44,7 +44,7 @@ export default async function PostPage({
           </span>
         ))}
       </div>
-      <ShareButtons url={`/writing/${post.slug}`} title={post.title} />
+      <ShareButtons title={post.title} />
       <div className="w-full border rounded-3xl p-4 my-4">
         <Image
           src={post.thumbnail}

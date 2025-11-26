@@ -8,7 +8,7 @@ export default function Footer({ className }: { className?: string }) {
   return (
     <div className={cn("w-full py-6", className)}>
       <div className="container lg:w-7xl flex justify-between mx-auto">
-        <div className="text-sm flex gap-1 items-center">
+        <div className="text-sm flex flex-wrap gap-1 items-center">
           <div className="flex gap-1 items-center">
             <span>Build with</span>
             <Link
@@ -31,7 +31,7 @@ export default function Footer({ className }: { className?: string }) {
             </Link>
           </div>
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-wrap">
           <Link
             href={profileData.linkedIn}
             target="_blank"

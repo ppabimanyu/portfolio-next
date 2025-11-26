@@ -27,7 +27,7 @@ export default function Navbar({ className }: { className?: string }) {
 
   return (
     <div className={cn("py-4", className)}>
-      <div className="container lg:w-7xl flex justify-between items-center mx-auto">
+      <div className="container lg:w-7xl flex flex-wrap justify-between items-center mx-auto">
         <Link href="/" className="flex items-center gap-2">
           <Avatar className="w-6 h-6">
             <AvatarImage src={profileData.profileUrl} alt="@shadcn" />
@@ -39,7 +39,7 @@ export default function Navbar({ className }: { className?: string }) {
           <div className="h-1 w-1 bg-foreground rounded-full" />
           <p className="text-sm font-semibold">{profileData.jobTitle}</p>
         </Link>
-        <div className="flex items-center gap-6">
+        <div className="flex flex-wrap items-center gap-6">
           <div className="flex items-center gap-6">
             {navData.map((item) => (
               <Link

@@ -5,16 +5,17 @@ import { Button } from "@/components/ui/button";
 import { Facebook, Linkedin, Twitter, Link2, Check } from "lucide-react";
 
 interface ShareButtonsProps {
-  url: string;
-  title: string;
+  url?: string;
+  title?: string;
 }
 
 export default function ShareButtons({ url, title }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
-  const shareUrl = typeof window !== "undefined" ? window.location.href : url;
+  console.log(window.location.href);
+  const shareUrl = url || window.location.href;
   const encodedUrl = encodeURIComponent(shareUrl);
-  const encodedTitle = encodeURIComponent(title);
+  const encodedTitle = encodeURIComponent(title || "");
 
   const shareLinks = {
     twitter: `https://x.com/intent/post?text=${encodedTitle}%20${encodedUrl}`,
