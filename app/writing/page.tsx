@@ -29,18 +29,18 @@ export const metadata = {
 };
 
 export default function WritingPage() {
-  const orderedPosts = allPosts.sort(
+  const orderedPosts = allPosts.toSorted(
     (a, b) => b.publishDate.getTime() - a.publishDate.getTime()
   );
 
   return (
-    <div className="w-full space-y-12 mb-12">
-      <div className="flex gap-4 justify-between items-end">
-        <div className="flex-1/2">
-          <h4 className="uppercase text-sm text-muted-foreground">
+    <main className="w-full space-y-8 md:space-y-12 mb-12">
+      <header className="flex flex-col md:flex-row gap-4 md:gap-6 justify-between md:items-end">
+        <div className="space-y-2">
+          <p className="uppercase text-sm text-muted-foreground">
             Writing & Notes
-          </h4>
-          <h1 className="text-2xl font-semibold">
+          </p>
+          <h1 className="text-xl md:text-2xl font-semibold">
             Essays on systems, interfaces, and the space in between
           </h1>
           <p className="text-sm text-muted-foreground">
@@ -49,29 +49,33 @@ export default function WritingPage() {
             tradeoffs, architecture, and keeping teams unblocked.
           </p>
         </div>
-        <div className="flex-1/2 flex flex-col items-end">
-          <div className="flex gap-2 items-center">
-            <p className="text-sm text-muted-foreground">Selected essays</p>
-            <div className="h-1 w-1 bg-muted-foreground rounded-full" />
-            <p className="text-sm text-muted-foreground">Updated weekly</p>
+        <div className="flex flex-col md:items-end text-sm text-muted-foreground md:text-end">
+          <div className="flex flex-wrap gap-2 items-center md:justify-end">
+            <span>Selected essays</span>
+            <span
+              className="h-1 w-1 bg-muted-foreground rounded-full"
+              aria-hidden="true"
+            />
+            <span>Updated weekly</span>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Mostly engineering, occasinally product and process.
-          </p>
+          <p>Mostly engineering, occasionally product and process.</p>
         </div>
-      </div>
-      <PlainCard className="w-full">
-        {orderedPosts.map((post, i) => (
-          <Link
-            href={`/writing/${post.slug}`}
-            key={post.slug}
-            className="space-y-4 cursor-pointer"
-          >
-            <PostCard post={post} />
-            {i < allPosts.length - 1 && <Separator className="my-4" />}
-          </Link>
-        ))}
-      </PlainCard>
-    </div>
+      </header>
+
+      <section aria-label="Blog posts">
+        <PlainCard className="w-full">
+          {orderedPosts.map((post, i) => (
+            <Link
+              href={`/writing/${post.slug}`}
+              key={post.slug}
+              className="block"
+            >
+              <PostCard post={post} />
+              {i < orderedPosts.length - 1 && <Separator className="my-4" />}
+            </Link>
+          ))}
+        </PlainCard>
+      </section>
+    </main>
   );
 }

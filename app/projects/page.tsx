@@ -22,14 +22,16 @@ export const metadata = {
 };
 
 export default function Projects() {
+  const latestYear = allProjects.toSorted((a, b) => b.year - a.year)[0]?.year;
+
   return (
-    <div className="w-full space-y-12 mb-12">
-      <div className="flex gap-4 justify-between items-end">
-        <div className="flex-1/2">
-          <h4 className="uppercase text-sm text-muted-foreground">
+    <main className="w-full space-y-8 md:space-y-12 mb-12">
+      <header className="flex flex-col md:flex-row gap-4 md:gap-6 justify-between md:items-end">
+        <div className="space-y-2">
+          <p className="uppercase text-sm text-muted-foreground">
             Selected works
-          </h4>
-          <h1 className="text-2xl font-semibold">
+          </p>
+          <h1 className="text-xl md:text-2xl font-semibold">
             Projects built with care and calm
           </h1>
           <p className="text-sm text-muted-foreground">
@@ -38,29 +40,28 @@ export default function Projects() {
             minimal interfaces.
           </p>
         </div>
-        <div className="flex-1/2 flex flex-col items-end">
-          <div className="flex gap-2 items-center">
-            <p className="text-sm text-muted-foreground">
-              {allProjects.length} projects
-            </p>
-            <div className="h-1 w-1 bg-muted-foreground rounded-full" />
-            <p className="text-sm text-muted-foreground">
-              Last updated{" "}
-              {allProjects.toSorted((a, b) => b.year - a.year)[0].year}
-            </p>
+        <div className="flex flex-col md:items-end text-sm text-muted-foreground md:text-end">
+          <div className="flex flex-wrap gap-2 items-center md:justify-end">
+            <span>{allProjects.length} projects</span>
+            <span
+              className="h-1 w-1 bg-muted-foreground rounded-full"
+              aria-hidden="true"
+            />
+            <span>Last updated {latestYear}</span>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Mostly using Next.js, Nest.js, and PostgreSQL.
-          </p>
+          <p>Mostly using Next.js, Nest.js, and PostgreSQL.</p>
         </div>
-      </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {allProjects.map((project) => (
-          <Link href={`/projects/${project.slug}`} key={project.slug}>
-            <ProjectCard project={project} />
-          </Link>
-        ))}
-      </div>
-    </div>
+      </header>
+
+      <section aria-label="Project list">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {allProjects.map((project) => (
+            <Link href={`/projects/${project.slug}`} key={project.slug}>
+              <ProjectCard project={project} />
+            </Link>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }

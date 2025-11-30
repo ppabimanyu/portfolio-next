@@ -64,7 +64,7 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   return (
-    <article className="space-y-4 max-w-4xl mx-auto mb-12">
+    <article className="space-y-4 w-full max-w-4xl mx-auto mb-12">
       <div className="flex gap-2 items-center text-sm text-muted-foreground uppercase">
         <span>{post.category}</span>
         <div className="h-1 w-1 bg-muted-foreground rounded-full" />
@@ -95,8 +95,8 @@ export default async function PostPage({ params }: PostPageProps) {
         <Image
           src={post.thumbnail}
           alt={post.title}
-          width={1000}
-          height={1000}
+          width={720}
+          height={720}
           className="object-cover w-full h-full rounded-md"
         />
       </div>
