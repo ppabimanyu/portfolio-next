@@ -25,7 +25,7 @@ export default function Navbar({ className }: { className?: string }) {
 
   return (
     <nav className={cn("py-4", className)}>
-      <div className="max-w-7xl flex flex-wrap justify-between items-center mx-auto">
+      <div className="max-w-7xl flex flex-wrap justify-between items-center mx-auto px-2">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2" onClick={closeMenu}>
           <Avatar className="w-6 h-6">

@@ -1,8 +1,8 @@
 "use client";
 
-import { Safari } from "./ui/safari";
 import { GithubIcon, SquareArrowOutUpRight } from "lucide-react";
 import { Button } from "./ui/button";
+import Image from "next/image";
 
 type ProjectCardProps = {
   project: {
@@ -19,11 +19,15 @@ type ProjectCardProps = {
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <div className="border border-border rounded-lg bg-card p-4 w-full h-fit space-y-2 transition-all bg-linear-to-br from-bacground via-background to-background hover:to-primary/10 hover:shadow hover:scale-[101%]">
-      <Safari
-        url={project.linkLive}
-        mode="simple"
-        imageSrc={project.thumbnail}
-      />
+      <div className="p-2 border rounded-3xl">
+        <Image
+          src={project.thumbnail}
+          alt={project.name}
+          width={500}
+          height={500}
+          className="rounded-lg"
+        />
+      </div>
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-semibold line-clamp-1 overflow-hidden">
           {project.name}

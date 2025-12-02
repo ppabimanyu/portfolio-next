@@ -9,6 +9,7 @@ import Link from "next/link";
 import Typography from "@/components/typography";
 import { env } from "@/env";
 import { profileData } from "@/lib/data";
+import Image from "next/image";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -71,7 +72,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <article className="space-y-4 max-w-4xl mx-auto mb-12">
       <PlainCard className="flex justify-between items-center gap-4">
         <div className="space-y-4 flex-2/3">
-          <div className="flex gap-2 items-center text-sm text-muted-foreground uppercase">
+          <div className="flex flex-wrap gap-2 items-center text-sm text-muted-foreground uppercase">
             <span>Case study</span>
             <div className="h-1 w-1 bg-muted-foreground rounded-full" />
             <span>{project.studyCase}</span>
@@ -84,7 +85,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
           <h1 className="text-3xl font-semibold italic">{project.name}</h1>
           <p className="text-muted-foreground text-sm">{project.description}</p>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             {project.techStack.map((tech) => (
               <span
                 key={tech}
@@ -113,11 +114,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             )}
           </div>
         </div>
-        <div className="flex-1/3 hidden md:block">
-          <Safari
+        <div className="flex-1/3 hidden md:block p-2 rounded-3xl border">
+          {/* <Safari
             url={project.linkLive}
             mode="simple"
             imageSrc={project.thumbnail}
+          /> */}
+          <Image
+            src={project.thumbnail}
+            alt={project.name}
+            width={500}
+            height={500}
+            className="rounded-lg"
           />
         </div>
       </PlainCard>

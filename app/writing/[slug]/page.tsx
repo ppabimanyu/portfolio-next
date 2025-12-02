@@ -65,7 +65,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <article className="space-y-4 w-full max-w-4xl mx-auto mb-12">
-      <div className="flex gap-2 items-center text-sm text-muted-foreground uppercase">
+      <div className="flex flex-wrap gap-2 items-center text-sm text-muted-foreground uppercase">
         <span>{post.category}</span>
         <div className="h-1 w-1 bg-muted-foreground rounded-full" />
         <span>Notes from the field</span>

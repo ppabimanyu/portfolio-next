@@ -52,8 +52,8 @@ export default function PostCard({ post }: PostCardProps) {
         <Image
           src={post.thumbnail}
           alt={post.title}
-          width={200}
-          height={100}
+          width={500}
+          height={500}
           className="object-cover w-full h-full rounded-lg"
         />
       </div>
