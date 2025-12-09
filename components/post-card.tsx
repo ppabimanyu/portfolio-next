@@ -17,7 +17,7 @@ export default function PostCard({ post }: PostCardProps) {
   return (
     <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-4 md:gap-8">
       <div className="flex flex-col gap-2 md:flex-2/3">
-        <div className="text-sm text-muted-foreground uppercase flex gap-2 items-center">
+        <div className="text-sm text-muted-foreground uppercase flex flex-wrap gap-2 items-center">
           <p>
             {post.publishDate.toDateString().split(" ").slice(1, 4).join(" ")}
           </p>

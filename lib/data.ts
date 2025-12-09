@@ -2,7 +2,7 @@ export const profileData = {
   name: "Putra Prassiesa Abimanyu",
   jobTitle: "Fullstack Developer",
   tagline: "Building digital gardens",
-  bio: "Fullstack developer focused on resilient backends, thoughtful interfaces, and quietly fast experiences for the web.",
+  bio: "Fullstack developer with a passion for building scalable systems and clean, performant code. I bridge the gap between robust backend architectures and intuitive user experiences — crafting applications that are fast, reliable, and a joy to use.",
   tackStack: [
     "Golang",
     "Node.JS",
@@ -26,4 +26,5 @@ export const profileData = {
   github: "https://github.com/ppabimanyu",
   email: "ppabimanyu@gmail.com",
   location: "Jember, East Java, Indonesia",
+  country: "Indonesia",
 };

@@ -9,7 +9,7 @@ import SecondaryButton from "@/components/secondary-button";
 import ProjectCard from "@/components/project-card";
 import { allPosts, allProjects } from "@/.content-collections/generated";
 import Contact from "@/components/contact";
-import { CodeXml, Mail } from "lucide-react";
+import { BriefcaseBusiness, CodeXml, Mail, MapPin } from "lucide-react";
 import {
   FadeIn,
   StaggerContainer,
@@ -35,7 +35,7 @@ export default function Home() {
       <section className="grid grid-cols-1 md:grid-cols-5 gap-4">
         <FadeIn direction="up" delay={0} className="col-span-1 md:col-span-3">
           <PlainCard className="flex gap-4 h-full">
-            <div className="space-y-4">
+            <div className="space-y-6 flex-2/3">
               <header className="space-y-2">
                 <FadeIn direction="up" delay={0.1}>
                   <p className="uppercase text-sm text-muted-foreground">
@@ -48,7 +48,7 @@ export default function Home() {
                   </h1>
                 </FadeIn>
                 <FadeIn direction="up" delay={0.3}>
-                  <p className="text-xl italic">{profileData.tagline}</p>
+                  <p className="text-xl italic">{profileData.jobTitle}</p>
                 </FadeIn>
                 <FadeIn direction="up" delay={0.4}>
                   <p className="text-sm text-muted-foreground">
@@ -56,8 +56,20 @@ export default function Home() {
                   </p>
                 </FadeIn>
               </header>
-              <FadeIn direction="up" delay={0.5}>
-                <nav className="flex gap-2" aria-label="Primary actions">
+              <FadeIn direction="up" delay={0.5} className="space-y-2">
+                <div className="flex gap-4">
+                  <div className="flex gap-1 text-sm items-center text-muted-foreground">
+                    <MapPin className="size-4" />
+                    <p>Based in {profileData.country}</p>
+                  </div>
+                  <div className="flex gap-1 text-sm items-center text-muted-foreground">
+                    <BriefcaseBusiness className="size-4" />
+                    <p>Available Now</p>
+                  </div>
+                </div>
+              </FadeIn>
+              <FadeIn direction="up" delay={0.5} className="space-y-2">
+                <div className="flex gap-2" aria-label="Primary actions">
                   <Link href="/projects">
                     <PrimaryButton className="flex gap-1">
                       <CodeXml size={16} aria-hidden="true" />
@@ -70,10 +82,10 @@ export default function Home() {
                       Contact
                     </SecondaryButton>
                   </Link>
-                </nav>
+                </div>
               </FadeIn>
             </div>
-            <div className="flex justify-end items-center">
+            <div className="hidden md:flex justify-end items-center flex-1/3">
               <div className="grid place-items-center">
                 <Image
                   src="/gradian-blur.svg"
