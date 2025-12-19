@@ -4,9 +4,9 @@ year: 2025
 studyCase: Personal Project
 description: A production-ready Next.js 16 starter template featuring comprehensive authentication system with email/password, social login, two-factor authentication, session management, and modern full-stack development tooling built for enterprise applications.
 techStack: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma ORM", "Better Auth", "TanStack Query", "TanStack Form", "Tailwind CSS 4", "Shadcn UI", "Zod"]
-thumbnail: /images/projects/nextjs-starterkit.png
-linkLive: https://nextjs-starterkit.ppabimanyu.com
-linkGithub: https://github.com/ppabimanyu/nextjs-starterkit
+thumbnail: /images/projects/nextjs-starter-kit.png
+linkLive: https://nextjs-starter-kit.ppabimanyu.com
+linkGithub: https://github.com/ppabimanyu/nextjs-starter-kit
 ---
 
 # Building Production-Ready Web Applications with Next.js Starterkit
