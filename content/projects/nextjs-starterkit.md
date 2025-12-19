@@ -3,7 +3,7 @@ name: Next.js StarterKit
 year: 2025
 studyCase: Personal Project
 description: A production-ready Next.js 16 starter template featuring comprehensive authentication system with email/password, social login, two-factor authentication, session management, and modern full-stack development tooling built for enterprise applications.
-techStack: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma ORM", "Better Auth", "tRPC", "TanStack Query", "TanStack Form", "Tailwind CSS 4", "Shadcn UI", "Zod"]
+techStack: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma ORM", "Better Auth", "TanStack Query", "TanStack Form", "Tailwind CSS 4", "Shadcn UI", "Zod"]
 thumbnail: /images/projects/nextjs-starterkit.png
 linkLive: https://nextjs-starterkit.ppabimanyu.com
 linkGithub: https://github.com/ppabimanyu/nextjs-starterkit
@@ -54,14 +54,6 @@ The template uses **Prisma 7** with **PostgreSQL**, providing:
 - Intuitive data modeling
 - Connection pooling ready for production
 
-### 🔌 Type-Safe APIs with tRPC
-
-All backend communication happens through **tRPC**, which enables:
-
-- End-to-end type safety without code generation
-- Automatic inference of API types on the frontend
-- Integration with **TanStack React Query** for caching and state management
-
 ### 🎨 Beautiful UI Components
 
 The UI layer is built with:
@@ -88,7 +80,7 @@ Whether you're building a SaaS, an internal tool, or a personal project, this te
 
 ## Conclusion
 
-The NextJS Starterkit represents a modern approach to bootstrapping web applications. By combining the best tools in the React ecosystem—Next.js 16, Prisma, tRPC, Better Auth, and TanStack libraries—it provides a foundation that's both powerful and pleasant to work with.
+The NextJS Starterkit represents a modern approach to bootstrapping web applications. By combining the best tools in the React ecosystem—Next.js 16, Prisma, Better Auth, and TanStack libraries—it provides a foundation that's both powerful and pleasant to work with.
 
 Instead of spending weeks on boilerplate, you can focus on what matters: building your unique features and delivering value to your users.
 
