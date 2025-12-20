@@ -15,9 +15,10 @@ import PrimaryButton from "./primary-button";
 import { profileData } from "@/lib/data";
 import { useForm } from "@tanstack/react-form";
 import { z } from "zod";
-import { sendContactEmail } from "@/lib/email-sender";
+import { sendContactEmail } from "@/lib/mail-template";
 import { toast } from "sonner";
 import { Send } from "lucide-react";
+import { Spinner } from "./ui/spinner";
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -38,9 +39,9 @@ export default function Contact() {
     },
     onSubmit: async ({ value }) => {
       await sendContactEmail({
-        name: value.name,
-        email: value.email,
-        message: value.message,
+        name: value.name.trim(),
+        email: value.email.trim(),
+        message: value.message.trim(),
       });
       form.reset();
       toast("Message sent successfully");
@@ -161,10 +162,12 @@ export default function Contact() {
               <p className="text-sm text-muted-foreground">
                 Replies within 1-2 business days. Happy to sign an NDA.
               </p>
-              <form.Subscribe selector={(state) => [state.canSubmit]}>
-                {([canSubmit]) => (
-                  <PrimaryButton disabled={!canSubmit}>
-                    <Send size={16} /> Send Note
+              <form.Subscribe
+                selector={(state) => [state.canSubmit, state.isSubmitting]}
+              >
+                {([canSubmit, isSubmitting]) => (
+                  <PrimaryButton disabled={!canSubmit || isSubmitting}>
+                    <Send size={16} /> Send Note {isSubmitting && <Spinner />}
                   </PrimaryButton>
                 )}
               </form.Subscribe>

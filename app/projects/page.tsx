@@ -8,16 +8,34 @@ export const metadata = {
   title: "Projects",
   description:
     "A closer look at shipped products, internal tools, and personal experiments. Each project balances resilient backends with clear, minimal interfaces.",
-  type: "website",
-  locale: "id_ID",
-  siteName: env.SITE_URL,
-  emails: profileData.email,
+  openGraph: {
+    title: "Projects",
+    description:
+      "A closer look at shipped products, internal tools, and personal experiments. Each project balances resilient backends with clear, minimal interfaces.",
+    type: "website",
+    locale: "id_ID",
+    url: `${env.NEXT_PUBLIC_SITE_URL}/projects`,
+    siteName: profileData.name,
+    emails: profileData.email,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Projects",
+      },
+    ],
+  },
   twitter: {
     title: "Projects",
     description:
       "A closer look at shipped products, internal tools, and personal experiments. Each project balances resilient backends with clear, minimal interfaces.",
     card: "summary_large_image",
-    site: env.SITE_URL,
+    creator: "@ppabimanyu",
+    images: ["/og-image.png"],
+  },
+  alternates: {
+    canonical: `${env.NEXT_PUBLIC_SITE_URL}/projects`,
   },
 };
 

@@ -2,7 +2,6 @@ import { allProjects } from "@/.content-collections/generated";
 import PlainCard from "@/components/plain-card";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Safari } from "@/components/ui/safari";
 import { Github, SquareArrowOutUpRight } from "lucide-react";
 import PrimaryButton from "@/components/primary-button";
 import Link from "next/link";
@@ -33,31 +32,27 @@ export async function generateMetadata({ params }: ProjectPageProps) {
       description: project.description,
       type: "website",
       locale: "id_ID",
-      siteName: env.SITE_URL,
-      site: `${env.SITE_URL}/projects/${slug}`,
+      url: `${env.NEXT_PUBLIC_SITE_URL}/projects/${slug}`,
+      siteName: profileData.name,
       emails: profileData.email,
       images: [
         {
-          url: `${env.SITE_URL}${project.thumbnail}`,
+          url: project.thumbnail,
           width: 1200,
           height: 630,
           alt: project.name,
         },
       ],
-      twitter: {
-        title: project.name,
-        description: project.description,
-        card: "summary_large_image",
-        site: `${env.SITE_URL}/projects/${slug}`,
-        images: [
-          {
-            url: `${env.SITE_URL}${project.thumbnail}`,
-            width: 1200,
-            height: 630,
-            alt: project.name,
-          },
-        ],
-      },
+    },
+    twitter: {
+      title: project.name,
+      description: project.description,
+      card: "summary_large_image",
+      creator: "@ppabimanyu",
+      images: [project.thumbnail],
+    },
+    alternates: {
+      canonical: `${env.NEXT_PUBLIC_SITE_URL}/projects/${slug}`,
     },
   };
 }

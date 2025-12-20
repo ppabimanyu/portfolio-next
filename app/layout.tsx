@@ -19,8 +19,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${profileData.name} | Portfolio`,
-  description: "Personal Portfolio",
+  metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL),
+  title: {
+    default: `${profileData.name} | Portfolio`,
+    template: `%s | ${profileData.name}`,
+  },
+  description: `${profileData.name} - ${profileData.jobTitle}. ${profileData.bio}`,
   keywords: [
     profileData.name,
     "Putra",
@@ -31,35 +35,40 @@ export const metadata: Metadata = {
     "Personal Portfolio",
     "Fullstack",
     "Developer",
+    "Software Engineer",
+    "Web Developer",
   ],
-  authors: [{ name: profileData.name }],
+  authors: [{ name: profileData.name, url: env.NEXT_PUBLIC_SITE_URL }],
+  creator: profileData.name,
+  publisher: profileData.name,
   openGraph: {
     title: `${profileData.name} | Portfolio`,
-    description: "Personal Portfolio",
+    description: `${profileData.name} - ${profileData.jobTitle}. ${profileData.bio}`,
     type: "website",
     locale: "id_ID",
-    siteName: env.SITE_URL,
+    url: env.NEXT_PUBLIC_SITE_URL,
+    siteName: profileData.name,
     emails: profileData.email,
     images: [
       {
-        url: `${env.SITE_URL}/og-image.png`,
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: env.SITE_URL,
+        alt: `${profileData.name} Portfolio`,
       },
     ],
   },
   twitter: {
     title: `${profileData.name} | Portfolio`,
-    description: "Personal Portfolio",
+    description: `${profileData.name} - ${profileData.jobTitle}. ${profileData.bio}`,
     card: "summary_large_image",
-    site: env.SITE_URL,
+    creator: "@ppabimanyu",
     images: [
       {
-        url: `${env.SITE_URL}/og-image.png`,
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: env.SITE_URL,
+        alt: `${profileData.name} Portfolio`,
       },
     ],
   },
@@ -74,6 +83,9 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-video-preview": -1,
     },
+  },
+  alternates: {
+    canonical: env.NEXT_PUBLIC_SITE_URL,
   },
 };
 

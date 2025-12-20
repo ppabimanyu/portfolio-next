@@ -31,9 +31,13 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       type: "article",
+      url: `${env.NEXT_PUBLIC_SITE_URL}/writing/${slug}`,
+      siteName: "Putra Prassiesa Abimanyu",
+      publishedTime: post.publishDate.toISOString(),
+      authors: [post.author],
       images: [
         {
-          url: `${env.SITE_URL}${post.thumbnail}`,
+          url: post.thumbnail,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -44,14 +48,11 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       card: "summary_large_image",
-      images: [
-        {
-          url: `${env.SITE_URL}${post.thumbnail}`,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
+      creator: "@ppabimanyu",
+      images: [post.thumbnail],
+    },
+    alternates: {
+      canonical: `${env.NEXT_PUBLIC_SITE_URL}/writing/${slug}`,
     },
   };
 }

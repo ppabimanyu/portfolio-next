@@ -16,15 +16,28 @@ export const metadata = {
       "A slow, considered journal of things I learn while building backend-heavy products with calm, legible frontends. Mostly about tradeoffs, architecture, and keeping teams unblocked.",
     type: "website",
     locale: "id_ID",
-    siteName: env.SITE_URL,
+    url: `${env.NEXT_PUBLIC_SITE_URL}/writing`,
+    siteName: profileData.name,
     emails: profileData.email,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Writing & Notes",
+      },
+    ],
   },
   twitter: {
     title: "Writing & Notes",
     description:
       "A slow, considered journal of things I learn while building backend-heavy products with calm, legible frontends. Mostly about tradeoffs, architecture, and keeping teams unblocked.",
     card: "summary_large_image",
-    site: env.SITE_URL,
+    creator: "@ppabimanyu",
+    images: ["/og-image.png"],
+  },
+  alternates: {
+    canonical: `${env.NEXT_PUBLIC_SITE_URL}/writing`,
   },
 };
 
